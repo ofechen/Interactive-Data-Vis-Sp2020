@@ -1,3 +1,4 @@
+  
 // data load
 // reference for d3.autotype: https://github.com/d3/d3-dsv#autoType
 d3.csv("iowa_results.csv", d3.autoType).then(data => {
@@ -74,6 +75,6 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
     
     svg.append("g")
     .attr("class","axis")
-    .attr("transform",'translate(40, 142)')
+    .attr("transform",'translate(41.4, 308.8)')
     .call(xAxis)
   });
