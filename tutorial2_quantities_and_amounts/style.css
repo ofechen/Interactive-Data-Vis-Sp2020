@@ -6,7 +6,7 @@ body {
   
   .label {
     fill: rgb(0, 0, 0);
-    text-anchor: center;
+    text-anchor: left;
   }
   
   .axis {

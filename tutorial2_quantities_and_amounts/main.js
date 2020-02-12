@@ -10,7 +10,7 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
       height = window.innerHeight / 2,
       paddingInner = 0.2,
       margin = { top: 20, bottom: 40, left: 40, right: 100 }
-      min_rect_width = 1
+      min_rect_width = 0
       Label_width = 40
       maxDelegates = d3.max(data, d=>d.Delegates);
   
@@ -49,9 +49,9 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
       .data(data)
       .join("rect")
       .attr("y", d => yScale(d.Candidate))
-      .attr("x", d => margin.left+Label_width+min_rect_width)
+      .attr("x", d => margin.left+Label_width)
       .attr("height", yScale.bandwidth())
-      .attr("width", d => xScale(d.Delegates)-margin.left+1)
+      .attr("width", d => xScale(d.Delegates)-margin.left+min_rect_width)
       .attr("fill", d => blues(d.Candidate))
   
     // append text
@@ -62,10 +62,9 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
       .attr("class", "label")
       // this allows us to position the text in the center of the bar
       .attr("y", d => yScale(d.Candidate) + (yScale.bandwidth() / 2))
-      .attr("x", d => xScale(d.Delegates))
+      .attr("x", d => xScale(d.Delegates)+margin.left+5)
       .text(d => d.Delegates)
-      .attr("dy", "0.3em")
-      .attr("dx",d => (width-margin.left-Label_width)/xScale(d.Delegates)+min_rect_width+Label_width);
+      .attr("dy", "0.3em");
   
     svg
       .append("g")
