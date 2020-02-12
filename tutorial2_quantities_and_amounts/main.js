@@ -29,7 +29,7 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
   
     const blues = d3
     .scaleOrdinal(d3.schemeBlues[6])
-    //.domain([0,maxDelegates])
+    .domain(data.map(d => d.Candidate).reverse())
     //.range(d3.schemeBlues[1],d3.schemeBlues[9])
 
     // reference for d3.axis: https://github.com/d3/d3-axis
@@ -70,11 +70,11 @@ d3.csv("iowa_results.csv", d3.autoType).then(data => {
     svg
       .append("g")
       .attr("class", "axis")
-      .attr("transform", `translate(80, 0)`)
+      .attr("transform", `translate(${2*Label_width}, 0)`)
       .call(yAxis);
     
     svg.append("g")
     .attr("class","axis")
-    .attr("transform",'translate(41.4, 308.8)')
+    .attr("transform",`translate(${Label_width}, ${height-margin.bottom})`)
     .call(xAxis)
   });
